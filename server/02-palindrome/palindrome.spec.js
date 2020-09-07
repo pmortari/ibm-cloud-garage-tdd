@@ -1,5 +1,6 @@
 let isPalindrome = sentence => {
   
+  if(typeof sentence !== 'string') throw new Error('Input must be a string');
   if(sentence === '') throw new Error('Empty strings are not palindromes');
   if(sentence.trim() === '') return false;
 
@@ -32,5 +33,9 @@ describe('the palindrome canary spec', () => {
     }).toThrowError('Empty strings are not palindromes');
   });
 
-  it.todo('error for not a string');
+  it('error for not a string', () => {
+    expect(() => {
+      isPalindrome(121);
+    }).toThrowError('Input must be a string');
+  });
 });
